@@ -15,7 +15,7 @@ app = Flask(__name__)
 def get_uuid():
     connection = psycopg2.connect(user="postgres", password="secret",
                                   host="localhost", port="5432",
-                                  database="postgres")
+                                  database="voice")
     print("PostgreSQL server information")
     print(connection.get_dsn_parameters(), "\n")
     return {"id": uuid.uuid4()}
