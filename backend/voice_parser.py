@@ -4,7 +4,7 @@ import whisper
 import time
 class WhisperModel():
     def __init__(self):
-        self.model = whisper.load_model("medium")
+        self.model = whisper.load_model("large")
         print("Model loaded")
 
     def parse(self, filename: str | Path = "audio.m4a"):

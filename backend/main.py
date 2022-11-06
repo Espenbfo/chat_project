@@ -22,7 +22,9 @@ while True:
         print(method_frame, header_frame, body)
         print("starting parsing")
         st = time.time()
-        print(model.parse(bytes.decode(body)))
+        file_path, id = bytes.decode(body).split("|")
+        text = model.parse(file_path)["text"]
         print(f"finished parsing in {time.time() - st} seconds")
+        channel.basic_publish(exchange="", routing_key=id,body=bytes(text, "utf-8"))
     else:
         print('No message returned')

@@ -2,3 +2,5 @@ git+https://github.com/openai/whisper.git
 pika
 flask
 psycopg2
+openai
+load_dotenv

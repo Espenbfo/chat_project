@@ -2,9 +2,10 @@ version: '3'
 
 services:
   db:
-    image: postgres:12-alpine
+    container_name: voice_backend
+    image: postgres:13.5-alpine
     ports:
-      - "5432:5432"
+      - "5533:5432"
     environment:
       POSTGRES_PASSWORD: secret
       POSTGRES_DB: voice

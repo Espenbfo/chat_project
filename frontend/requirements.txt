@@ -1,0 +1,5 @@
+gTTS
+playsound
+pyaudio
+wave
+pygame
