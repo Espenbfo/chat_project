@@ -1,2 +1,5 @@
-##(backend)[backend/readme.md]
-##(docker)[docker/readme.md]
+## Voice chat with gpt 3
+
+[docker](docker/readme.md)
+
+[backend](backend/readme.md)
