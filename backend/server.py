@@ -5,6 +5,8 @@ from flask import Flask, flash, request, redirect, url_for
 import uuid
 import psycopg2
 from openai_functions import respond
+
+
 UPLOAD_DIRECTORY = Path("files")
 UPLOAD_DIRECTORY.mkdir(exist_ok=True)
 MAX_AUDIO_PARSE_TIME = 10
@@ -18,6 +20,7 @@ def get_connection():
                               database="voice")
     conn.autocommit = True
     return conn
+
 @app.route('/greet', methods=['GET'])
 def get_uuid():
     print("PostgreSQL server information")
@@ -73,6 +76,7 @@ def upload_file():
             channel.queue_delete(queue=str(file_id))
             connection.close()
             if len(text):
+                print("New text", text)
                 conn = get_connection()
                 cur = conn.cursor()
                 cur.execute(

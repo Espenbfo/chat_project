@@ -4,10 +4,11 @@ import whisper
 import time
 class WhisperModel():
     def __init__(self):
-        self.model = whisper.load_model("large")
+        self.model = whisper.load_model("medium")
         print("Model loaded")
 
     def parse(self, filename: str | Path = "audio.m4a"):
+        print("transcribing", filename)
         return self.model.transcribe(filename)
 
 if __name__ == "__main__":

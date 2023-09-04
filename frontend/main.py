@@ -5,12 +5,14 @@ import wave
 import requests
 import pygame.mixer
 import time
-THRESHOLD = 2500
+PASSIVE_THRESHOLD = 2500
+ACTIVE_THRESHOLD = 2000
 MEMORY = 100
 CHUNK = 1024
 
 FILENAME = "input.wav"
-url = "http://192.168.2.31:5000"
+url = "http://192.168.2.35:5000"
+url = "http://127.0.0.1:5000"
 
 def play_response(response: str):
     tts = gTTS(response, lang="no")
@@ -38,14 +40,18 @@ def listen():
     memory = -1
     while True:
         data = stream.read(CHUNK)
-        if audioop.rms(data, 2) > THRESHOLD:
+        rms_value = audioop.rms(data, 2)
+        if memory == -1 and rms_value > PASSIVE_THRESHOLD:
+            memory = MEMORY
+        elif memory != -1 and rms_value > ACTIVE_THRESHOLD:
             memory = MEMORY
         if memory > 0:
             memory -= 1
             frames.append(data)
         elif memory == 0:
             break
-        print(memory)
+        if (memory != -1):
+            print(memory)
         # check level against threshold, you'll have to write getLevel()
     file = wave.open(FILENAME, 'wb')
     file.setnchannels(1)
