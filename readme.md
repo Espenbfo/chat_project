@@ -13,4 +13,5 @@ Then you need to run the frontend. It does not need to be run on the same comput
 
 
 ### Diagram:
-![bilde](https://github.com/Espenbfo/chat_project/assets/55250882/1842ea7f-152a-4848-beac-cb7c5a7fd2b3)
+![bilde](https://github.com/Espenbfo/chat_project/assets/55250882/21bd6976-257f-4b55-a787-90d9bc511a20)
+
