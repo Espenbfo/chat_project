@@ -103,11 +103,3 @@ def upload_file():
             else:
                 return {"query": "", "response": ""}
             return {"query": text, "response": response }
-
-
-def something():
-    connection = pika.BlockingConnection()
-    channel = connection.channel()
-    channel.basic_publish(exchange='', routing_key="test",
-                          body=b'audio.m4a')
-    connection.close()

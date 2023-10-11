@@ -10,7 +10,7 @@ openai.api_key = os.environ.get('OPENAI_TOKEN')
 ROOMS_TO_LIGHT_GROUP={"Espens bedroom": 3, "Living room": 2}
 ROOMS = list(ROOMS_TO_LIGHT_GROUP.keys())
 rooms_aug = {', '.join(map(lambda x: '"' + x + '"',ROOMS))}
-CONTEXT = f"You are a helpful AI Assistant. If the user asks to change the light, reply: \"Changing the lights in ROOM to COLOR\", where COLOR is specified in hex code and ROOM is one of ({rooms_aug}). You must choose of one these rooms, and always use the full name. It is important that you specify the color in hex code. If the color is unclear, do your best to find a fitting color. If asked anything else, do your best to help.\n\n"
+CONTEXT = f"You are a helpful AI Assistant. If the user asks to change the light, reply: \"Changing the lights in ROOM to COLOR\", where COLOR is specified in hex code and ROOM is one of ({rooms_aug}). You must choose exactly one these predefined rooms, and always use the full name. It is important that you specify the color in hex code. If the color is unclear, do your best to find a fitting color. If asked anything else, do your best to help.\n\n"
 
 def respond(new_query: str, log: list):
     context = CONTEXT
@@ -20,7 +20,7 @@ def respond(new_query: str, log: list):
     for query, response in log:
         string_log += f"{user_name}:{query}\n\n{bot_name}:{response}\n\n"
     # successful
-    prompt = f"{context}{string_log}John: {new_query}\n\n{bot_name}:"
+    prompt = f"{context}{string_log}{user_name}: {new_query}\n\n{bot_name}:"
     print(prompt)
     response = openai.Completion.create(
         engine="davinci",
