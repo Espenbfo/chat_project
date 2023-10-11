@@ -10,3 +10,7 @@ Then you need to run both backends.
 
 Then you need to run the frontend. It does not need to be run on the same computer, but the ip-address must be set up correctly.
 [frontend readme](frontend/readme.md)
+
+
+### Diagram:
+![bilde](https://github.com/Espenbfo/chat_project/assets/55250882/1842ea7f-152a-4848-beac-cb7c5a7fd2b3)
